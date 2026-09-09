@@ -1,0 +1,1049 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MPS / tensor-network quantum circuit simulator for MIMIQ">
+      
+      
+      
+        <link rel="canonical" href="https://docs.qperfect.io/tensorweaver-python/tuning/cutoffs/">
+      
+      
+        <link rel="prev" href="../algorithms/">
+      
+      
+        <link rel="next" href="../reordering/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Cutoffs and bond dimension - MIMIQ TensorWeaver</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cutoffs-and-bond-dimension" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MIMIQ TensorWeaver" class="md-header__button md-logo" aria-label="MIMIQ TensorWeaver" data-md-component="logo">
+      
+  <img src="../../assets/tensorweaver-logo-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MIMIQ TensorWeaver
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cutoffs and bond dimension
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MIMIQ TensorWeaver" class="md-nav__button md-logo" aria-label="MIMIQ TensorWeaver" data-md-component="logo">
+      
+  <img src="../../assets/tensorweaver-logo-white.svg" alt="logo">
+
+    </a>
+    MIMIQ TensorWeaver
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../execute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Circuit Execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuning a run
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tuning a run
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Choosing an algorithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cutoffs and bond dimension
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cutoffs and bond dimension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bonddim-the-ceiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bonddim, the ceiling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sv_cutoff-the-state-side-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sv_cutoff, the state-side threshold
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpo_cutoff-the-operator-side-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mpo_cutoff, the operator-side threshold
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entdim-the-operators-width" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        entdim, the operator's width
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-they-interact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How they interact
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#establishing-that-a-result-is-converged" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Establishing that a result is converged
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deferred-compression-post_compress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deferred compression (post_compress)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qubit ordering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../free-threading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Free-threaded Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qiskit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qiskit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bonddim-the-ceiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bonddim, the ceiling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sv_cutoff-the-state-side-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sv_cutoff, the state-side threshold
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpo_cutoff-the-operator-side-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mpo_cutoff, the operator-side threshold
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entdim-the-operators-width" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        entdim, the operator's width
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-they-interact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How they interact
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#establishing-that-a-result-is-converged" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Establishing that a result is converged
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deferred-compression-post_compress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deferred compression (post_compress)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="cutoffs-and-bond-dimension">Cutoffs and bond dimension<a class="headerlink" href="#cutoffs-and-bond-dimension" title="Permanent link">&para;</a></h1>
+<p>Four settings decide how much of the state and of the operator a run keeps. They
+act at different stages, and the tightest one in play is what bounds a run's
+accuracy, so it is worth knowing which stage each belongs to.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>Acts on</th>
+<th>Kind</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bonddim</code></td>
+<td><code>256</code></td>
+<td>The state</td>
+<td>Hard ceiling on the bond dimension.</td>
+</tr>
+<tr>
+<td><code>sv_cutoff</code></td>
+<td><code>1e-7</code></td>
+<td>The state</td>
+<td>Threshold below which Schmidt values are discarded.</td>
+</tr>
+<tr>
+<td><code>mpo_cutoff</code></td>
+<td><code>1e-15</code></td>
+<td>The operator</td>
+<td>Threshold used while gates are fused into an operator.</td>
+</tr>
+<tr>
+<td><code>entdim</code></td>
+<td><code>16</code></td>
+<td>The operator</td>
+<td>Ceiling on the operator's own width. Not an accuracy dial; see below.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bonddim-the-ceiling"><code>bonddim</code>, the ceiling<a class="headerlink" href="#bonddim-the-ceiling" title="Permanent link">&para;</a></h2>
+<p>The bond dimension is how much entanglement the state can carry across a cut.
+<code>bonddim</code> caps it, and it is never exceeded. This is the main accuracy and cost
+control: memory grows with it, and the linear algebra that applies gates grows
+faster still, so doubling <code>bonddim</code> is considerably more than twice the work.</p>
+<p>The ceiling is a hard cut. It discards weight whether or not the weight is
+small, which is what distinguishes it from the cutoffs below.</p>
+<p>Whether it is binding is directly observable:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">TwSimulator</span><span class="p">(</span><span class="n">bonddim</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">state</span><span class="p">,</span> <span class="n">fidelity</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">zerostate</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">sim</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">circuit</span><span class="p">))</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">max_used_bond_dim</span><span class="p">,</span> <span class="s2">"of"</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</code></pre></div>
+<p>If that reads <code>64 of 64</code> the ceiling is binding and accuracy is being paid away
+on every application. If it reads <code>12 of 64</code>, raising <code>bonddim</code> buys nothing at
+all and you can lower it to save memory.</p>
+<h2 id="sv_cutoff-the-state-side-threshold"><code>sv_cutoff</code>, the state-side threshold<a class="headerlink" href="#sv_cutoff-the-state-side-threshold" title="Permanent link">&para;</a></h2>
+<p>After each application the affected bonds are re-factored and Schmidt values
+below <code>sv_cutoff</code> are dropped, even when the bond is under the ceiling. It is an
+<strong>absolute</strong> threshold, not one relative to the largest value.</p>
+<p>At the default of <code>1e-7</code> it removes weight that is numerically negligible for
+most work and usually costs nothing. Lower it toward <code>1e-10</code> when you need
+tighter accuracy at a <code>bonddim</code> you are not saturating, which is the regime
+where it, rather than the ceiling, is the binding control. Raise it to trade
+accuracy for speed deliberately.</p>
+<h2 id="mpo_cutoff-the-operator-side-threshold"><code>mpo_cutoff</code>, the operator-side threshold<a class="headerlink" href="#mpo_cutoff-the-operator-side-threshold" title="Permanent link">&para;</a></h2>
+<p>Gates are fused into an operator before being applied, and that fusion has its
+own truncation. <code>mpo_cutoff</code> is its threshold. It is independent of
+<code>sv_cutoff</code>, and it is set at <code>1e-15</code>, effectively exact, so that the operator
+is not what limits a run.</p>
+<p>That independence is the thing to understand about it. <strong>A loose <code>mpo_cutoff</code>
+caps a run's accuracy no matter how tight <code>sv_cutoff</code> and <code>bonddim</code> are</strong>,
+because the operator being applied is already an approximation of the circuit
+before the state ever sees it. Loosen it only when you have measured that
+intermediate operators are the memory problem, and expect a matching loss of
+accuracy.</p>
+<h2 id="entdim-the-operators-width"><code>entdim</code>, the operator's width<a class="headerlink" href="#entdim-the-operators-width" title="Permanent link">&para;</a></h2>
+<p><code>entdim</code> caps the bond dimension of the operator that gates accumulate into.
+Gates keep fusing into one operator until the next would exceed it, at which
+point the operator is applied and a fresh one is started. Raising it batches
+more gates per application, which is usually faster on deep, strongly
+entangling segments; lowering it keeps intermediate operators small.</p>
+<p><code>entdim</code> is deliberately <strong>not</strong> an accuracy dial in the way the others are. A
+single gate whose operator rank exceeds <code>entdim</code> raises an error rather than
+being applied at reduced accuracy. Silently approximating a gate you asked for
+is not a trade the simulator makes on your behalf, so an <code>entdim</code> that is too
+small tells you so.</p>
+<h2 id="how-they-interact">How they interact<a class="headerlink" href="#how-they-interact" title="Permanent link">&para;</a></h2>
+<p>The four compose, and the tightest bound wins:</p>
+<ul>
+<li>The operator is built subject to <code>entdim</code> and <code>mpo_cutoff</code>.</li>
+<li>That operator is applied to the state, and the result is truncated subject to
+  <code>bonddim</code> and <code>sv_cutoff</code>.</li>
+</ul>
+<p>So an accurate run needs every stage to be accurate. Tightening <code>sv_cutoff</code>
+while leaving <code>mpo_cutoff</code> loose changes nothing, because the error is already
+in the operator.</p>
+<h2 id="establishing-that-a-result-is-converged">Establishing that a result is converged<a class="headerlink" href="#establishing-that-a-result-is-converged" title="Permanent link">&para;</a></h2>
+<p>No single number a run reports tells you the answer is right. The reported
+fidelity accounts for discarded weight and nothing else, so it is a screen
+rather than a certificate; see
+<a href="../../concepts/#reading-the-reported-fidelity">Reading the reported fidelity</a>.</p>
+<p>The convergence check is to vary the control that bounds the approximation and
+watch the observable you care about:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">for</span> <span class="n">chi</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">):</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">results</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">bonddim</span><span class="o">=</span><span class="n">chi</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">fidelities</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">results</span><span class="o">.</span><span class="n">histogram</span><span class="p">())</span>
+</code></pre></div>
+<p>When the observable stops moving as <code>bonddim</code> grows, the answer is converged.
+When it is still moving at the largest <code>bonddim</code> you can afford, it is not, and
+the fidelity was not telling you the whole story.</p>
+<p>A mirror circuit is the other standard check, and it is the stronger one because
+it tests the state rather than the bookkeeping: apply <span class="arithmatex">\(U\)</span>, then <span class="arithmatex">\(U^\dagger\)</span>, and
+measure how much of <span class="arithmatex">\(|0\dots0\rangle\)</span> comes back.</p>
+<p>Example 05 in the bundled <a href="../../examples/">examples</a> runs a <code>bonddim</code> sweep
+against a high-<code>bonddim</code> reference.</p>
+<h2 id="deferred-compression-post_compress">Deferred compression (<code>post_compress</code>)<a class="headerlink" href="#deferred-compression-post_compress" title="Permanent link">&para;</a></h2>
+<p><code>post_compress</code> is a cost control rather than an accuracy threshold, but it
+belongs here because turning it off changes what the cutoffs mean.</p>
+<p>With it on, which is the default, a compression pass runs after every operator
+application and returns the state to canonical form. Canonical form is what
+makes the values compared against <code>sv_cutoff</code> the state's true Schmidt weights.
+With it off, that pass is deferred, so later truncations compare values that are
+no longer those weights, and the bond dimension can drift upward on numerical
+noise.</p>
+<p>Leave it on unless you have measured that your circuits are unaffected.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  <a class="tw-footer-brand" href="https://www.qperfect.io" title="QPerfect" target="_blank" rel="noopener">
+    <img src="../../assets/qperfect-logo-white.svg" alt="QPerfect">
+  </a>
+  
+    <div class="md-copyright__highlight">Copyright &copy; 2025&ndash;2026 QPerfect. All rights reserved.</div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "content.code.copy", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+      
+    
+  </body>
+</html>

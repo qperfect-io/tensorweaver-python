@@ -1,0 +1,4035 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MPS / tensor-network quantum circuit simulator for MIMIQ">
+      
+      
+      
+        <link rel="canonical" href="https://docs.qperfect.io/tensorweaver-python/api/">
+      
+      
+        <link rel="prev" href="../examples/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>API Reference - MIMIQ TensorWeaver</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MIMIQ TensorWeaver" class="md-header__button md-logo" aria-label="MIMIQ TensorWeaver" data-md-component="logo">
+      
+  <img src="../assets/tensorweaver-logo-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MIMIQ TensorWeaver
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MIMIQ TensorWeaver" class="md-nav__button md-logo" aria-label="MIMIQ TensorWeaver" data-md-component="logo">
+      
+  <img src="../assets/tensorweaver-logo-white.svg" alt="logo">
+
+    </a>
+    MIMIQ TensorWeaver
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../execute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Circuit Execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuning a run
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tuning a run
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tuning/algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Choosing an algorithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tuning/cutoffs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cutoffs and bond dimension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tuning/reordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qubit ordering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../free-threading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Free-threaded Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qiskit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qiskit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#high-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High-level
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High-level">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#twsimulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TwSimulator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TwSimulator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TwSimulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        capabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        topology
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.build_state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        build_state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.zerostate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zerostate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.evolvezerostate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        evolvezerostate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.compile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        compile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.default_passes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        default_passes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.expectation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        expectation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.evolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        evolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.apply_segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        apply_segment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.apply_instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        apply_instruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.sample_kraus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sample_kraus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#twstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TwState
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TwState">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TwState
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.classical_bits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        classical_bits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.complex_values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        complex_values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.get_loss_state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_loss_state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.amplitude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        amplitude
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sample
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaverbasis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TensorWeaverBasis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TensorWeaverBasis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TensorWeaverBasis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TensorWeaverBasis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TensorWeaverBasis--ccx-stays-as-control2-gatex-dispatched-to-apply_controlled_gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CCX stays as Control(2, GateX), dispatched to apply_controlled_gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TensorWeaverBasis.isterminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        isterminal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TensorWeaverBasis.decompose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        decompose
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Classes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utility-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utility Functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instruction-dispatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instruction Dispatch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exceptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qiskit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qiskit
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#high-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High-level
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High-level">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#twsimulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TwSimulator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TwSimulator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TwSimulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        capabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        topology
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.build_state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        build_state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.zerostate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zerostate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.evolvezerostate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        evolvezerostate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.compile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        compile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.default_passes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        default_passes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.expectation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        expectation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.evolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        evolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.apply_segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        apply_segment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.apply_instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        apply_instruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.sample_kraus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sample_kraus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwSimulator.execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#twstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TwState
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TwState">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TwState
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.classical_bits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        classical_bits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.complex_values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        complex_values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.get_loss_state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_loss_state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.amplitude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        amplitude
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sample
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TwState.reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaverbasis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TensorWeaverBasis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TensorWeaverBasis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TensorWeaverBasis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TensorWeaverBasis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TensorWeaverBasis--ccx-stays-as-control2-gatex-dispatched-to-apply_controlled_gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CCX stays as Control(2, GateX), dispatched to apply_controlled_gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TensorWeaverBasis.isterminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        isterminal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorweaver.TensorWeaverBasis.decompose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        decompose
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Classes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utility-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utility Functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instruction-dispatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instruction Dispatch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exceptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qiskit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qiskit
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h1>
+<p>An index of the public surface. For what the knobs mean see
+<a href="../concepts/">Concepts</a>, for <code>execute()</code>'s keywords see
+<a href="../execute/">Circuit Execution</a>, and for runnable code see
+<a href="../examples/">Examples</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Gate and operator matrix inputs</p>
+<p>Anything taking a one- or two-qubit gate or operator (<code>apply_gate_1q</code>,
+<code>apply_gate_2q</code>, <code>expectation_1q</code>, <code>expectation_2q</code>, <code>apply_kraus_*</code>)
+accepts a <strong>numpy array of dtype <code>complex128</code></strong>: <code>(2, 2)</code> for a 1Q gate,
+<code>(4, 4)</code> for a 2Q gate, <code>(n_ops, dim, dim)</code> for a stack of Kraus operators.
+On a qudit site of dimension <code>d</code>, the shapes are <code>(d, d)</code> and
+<code>(d₁·d₂, d₁·d₂)</code>.</p>
+<p>A flat list of floats in column-major <code>[re, im, re, im, ...]</code> order is also
+accepted, with length 8 for a 1Q gate and 32 for a 2Q gate. It is
+deprecated; use numpy arrays.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Bitstring / qubit ordering</p>
+<p>TensorWeaver is <strong>little-endian by qubit index</strong>: bitstring position <code>i</code> is
+qubit <code>i</code>. This is the opposite of Qiskit's convention, so bitstrings from
+<code>mps.sample_bitstring()</code>, <code>mps.sample()</code>, <code>results.cstates</code>, and
+<code>results.histogram()</code> appear reversed compared to Qiskit output. The same
+applies to the bitstring argument of <code>mps.amplitude()</code>.</p>
+</div>
+<h2 id="high-level">High-level<a class="headerlink" href="#high-level" title="Permanent link">&para;</a></h2>
+<h3 id="execute">execute<a class="headerlink" href="#execute" title="Permanent link">&para;</a></h3>
+<p>Every keyword, with its default and when to change it, is documented in
+<a href="../execute/#parameters">Circuit Execution</a>.</p>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tensorweaver.execute" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">tensorweaver</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=...</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">num_qubits</span><span class="o">=...</span><span class="p">,</span> <span class="n">bonddim</span><span class="o">=...</span><span class="p">,</span> <span class="n">entdim</span><span class="o">=...</span><span class="p">,</span> <span class="n">max_bond_dim</span><span class="o">=...</span><span class="p">,</span> <span class="n">sv_cutoff</span><span class="o">=...</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=...</span><span class="p">,</span> <span class="n">seed</span><span class="o">=...</span><span class="p">,</span> <span class="n">bitstrings</span><span class="o">=...</span><span class="p">,</span> <span class="n">reorderqubits</span><span class="o">=...</span><span class="p">,</span> <span class="n">reorderqubits_alpha</span><span class="o">=...</span><span class="p">,</span> <span class="n">fuse</span><span class="o">=...</span><span class="p">,</span> <span class="n">fuse_threshold</span><span class="o">=...</span><span class="p">,</span> <span class="n">canonicaldecompose</span><span class="o">=...</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=...</span><span class="p">,</span> <span class="n">traversal</span><span class="o">=...</span><span class="p">,</span> <span class="n">usemkl</span><span class="o">=...</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.execute" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents first">
+
+
+    </div>
+
+</div><h3 id="twsimulator">TwSimulator<a class="headerlink" href="#twsimulator" title="Permanent link">&para;</a></h3>
+<p>A reusable simulator. Configuration is fixed at construction; <code>nsamples</code>,
+<code>seed</code>, and <code>num_qubits</code> are per call.</p>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="tensorweaver.TwSimulator"></a>
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="mimiqcircuits.backends.LocalBackend">LocalBackend</span></code></p>
+
+
+
+        <p>MPS quantum circuit simulator, backed by the TensorWeaver core.</p>
+<p>Subclasses :class:<code>mimiqcircuits.backends.LocalBackend</code>, so the usual
+<code>sim.execute(circuit, nsamples=..., seed=...)</code> call works and returns a
+:class:<code>mimiqcircuits.QCSResults</code>. :meth:<code>capabilities</code> lists what it can
+serve.</p>
+<p>Every knob below is set on the constructor and fixed for the life of the
+instance; build a new simulator to change one. Accepting them per call as
+well would mean distinguishing "not passed" from "passed the default" on
+every keyword.</p>
+<p><strong>Execution mode.</strong> The circuit decides, not a keyword. Trailing
+measurements are split off into a classical projection and do not count.
+If everything left is unitary, the state is evolved once and <code>nsamples</code>
+bitstrings are drawn from it (sampling mode, one entry in
+<code>results.fidelities</code>). If any surviving operation on qubits is
+non-unitary (a mid-circuit <code>Measure</code> or <code>Reset</code>, a noise channel,
+qubit loss), the circuit is re-evolved from scratch <code>nsamples</code> times
+(trajectory mode, one fidelity and one cstate per trajectory).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>bonddim</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum MPS bond dimension, the memory and accuracy knob.
+Default <code>256</code>. Raising it lets the state carry more entanglement
+before truncation, at a cost that grows steeply; lowering it
+truncates earlier and lowers the reported fidelity.</p>
+              </div>
+            </td>
+            <td>
+                  <code>256</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>entdim</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum bond dimension of the MPO that gates are fused into
+between state updates. Default <code>16</code>. Larger values batch more
+gates per update. A gate whose operator rank exceeds <code>entdim</code>
+raises rather than being applied at reduced accuracy, so raise
+<code>entdim</code> if a circuit reports that.</p>
+              </div>
+            </td>
+            <td>
+                  <code>16</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>sv_cutoff</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Singular-value floor applied when an MPO is compressed into
+the state. <code>None</code> (default) uses the library default <code>1e-7</code>.
+Lower it toward machine precision for accuracy, raise it for speed.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>mpo_cutoff</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Singular-value floor applied while gates are fused into the
+MPO. <code>None</code> (default) uses the library default <code>1e-15</code>, which
+is essentially exact. Independent of <code>sv_cutoff</code>; there is rarely
+a reason to change it.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="tensorweaver.Algorithm">Algorithm</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>How each fused MPO is applied to the state. The names read
+as the method plus what it applies: <code>"dmpo"</code> is direct MPO
+application, <code>"cmpo"</code> canonical, and <code>"vmpoa"</code> / <code>"vmpob"</code>
+variational variants a and b. <code>"vmpoa"</code>
+(default) and <code>"vmpob"</code> run single- and two-site variational
+sweeps seeded by a zip-up; <code>"dmpo"</code> is the bare zip-up, roughly
+2× faster and markedly less accurate. On a 16-qubit brick-layer at
+<code>bonddim=64</code> the variational sweep is worth about 4× in fidelity.
+The default matches MPSSim's (<code>MPO1z</code>), so results are comparable
+with the incumbent MIMIQ engine without tuning.</p>
+<p><code>"cmpo"</code> is a single pass like <code>"dmpo"</code>, arranged so the weight
+it discards is chosen against the state's own Schmidt spectrum.
+Where the ceiling binds it keeps more of the state and tends to
+leave it narrower, which makes later gates cheaper too, at close to
+single-pass cost. It is also the accurate choice under
+<code>usegpu=True</code>. See the "Choosing an algorithm" page of the manual
+for how to decide.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;vmpoa&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>post_compress</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Run the global recond and compression sweep after every
+MPO application. Default <code>True</code>. The sweep restores canonical
+form, which is what keeps the next zip-up's singular values equal
+to the physical Schmidt weights. Turning it off defers one sweep to
+end of circuit: faster on circuits that stay well below
+<code>bonddim</code>, but bond dimension then creeps on zip-up noise until
+the zipper's intermediate, which carries the <em>MPO</em> bond index and
+not the state's, crosses <code>bonddim</code>, and truncation in the wrong
+gauge corrupts the state. Measured on a 16-qubit QFT at
+<code>bonddim=64</code>: mirror fidelity 1.0 with it on, 0.535 with it off,
+and the reported fidelity reads 1.0 either way.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>reorderqubits</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | <span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Qubit relabelling applied in :meth:<code>compile</code> to bring
+interacting qubits closer together, which lowers bond-dimension
+growth. <code>False</code> (default) leaves the layout alone. <code>True</code>
+selects the greedy method; the other spellings are <code>"greedy"</code>,
+<code>"sa"</code> / <code>"simulated_annealing"</code> and <code>"multilevel"</code>. Samples
+and amplitudes are translated back to the user's qubit frame on
+read-out.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>reorderqubits_alpha</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Exponent α in the reordering cost
+<code>Cα(π) = Σ |π(i) − π(j)|^α · w(i, j)</code>, where <code>w</code> counts the
+gates coupling a pair. Default <code>3.0</code>; higher values penalise
+long-range couplings harder.</p>
+              </div>
+            </td>
+            <td>
+                  <code>3.0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>seed</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Master RNG seed for every run this instance drives. <code>None</code>
+(default) draws fresh entropy per run. A <code>seed=</code> on
+:meth:<code>execute</code> overrides it.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>buffer</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Depth of the gate-fusion pipeline. <code>0</code> (default) fuses and
+applies inline; a positive value runs fusion on a background
+thread that prepares up to <code>buffer</code> MPOs ahead while evolution
+applies them, overlapping the fusion of the next block with the
+application of the current one. Results are identical to
+<code>buffer=0</code>. The overlap is real parallelism because
+<code>mps.apply_mpo</code> releases the GIL, and a depth of <code>2</code> to <code>4</code>
+is enough because only one or two MPOs are ever in flight.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>traversal</code>
+            </td>
+            <td>
+                  <code><span title="tensorweaver.Traversal">Traversal</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Order in which gates are walked while they are fused into
+MPOs. <code>"sequential"</code> (default) is the circuit's insertion order;
+<code>"bfs"</code> is a breadth-first topological order that groups mutually
+independent gates into layers; <code>"dfs"</code> is depth-first, following
+one dependency chain to its end before backtracking. All three
+produce the same simulated state and differ only in how gates batch
+into MPOs, which shifts the intermediate bond dimension and
+therefore the runtime. <code>"bfs"</code> tends to pack each MPO with more
+commuting gates, which helps on wide, shallow layers.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;sequential&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>usemkl</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Linear-algebra engine. <code>None</code> (default) takes whichever
+engine this build ships, preferring OpenBLAS: it is vendored into
+the wheel, so it works from a plain <code>pip install</code>. Where the wheel
+has no OpenBLAS engine, which is the Windows wheel, the default
+resolves to MKL instead. <code>True</code> forces Intel MKL, whose runtime
+the wheel cannot bundle and must come from the environment; if it is
+absent, the first use raises :class:<code>ImportError</code> with installation
+instructions. <code>False</code> forces OpenBLAS, and raises on a build that
+does not have it rather than switching engine. The resolved value is
+readable as <code>sim.usemkl</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>usegpu</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Run the state on an NVIDIA GPU. <code>False</code> by default. The whole
+MPS is moved into device memory once, evolved there, and moved back
+once, so a circuit pays one transfer at each end rather than one per
+gate. Requires <code>algorithm="dmpo"</code> or <code>"cmpo"</code>, the two
+single-pass algorithms with a device implementation, and cannot be
+combined with <code>usemkl=True</code>: the CUDA engine is one module whose
+host provider is OpenBLAS. Raises :class:<code>ImportError</code> at first use
+if this build has no CUDA engine or no GPU is reachable. Prefer
+<code>"cmpo"</code>, the accurate one of the two.</p>
+<p><strong>Whether it is faster depends on the bond dimension.</strong> The device
+wins where the state is large and loses where it is small, because
+each site's truncated SVD carries a fixed launch cost that the host
+does not pay. Measured on an A30 against one Xeon core, on a
+24-qubit brick-layer circuit: 0.8× at <code>bonddim=64</code>, 2.8× at 128,
+8.2× at 256, 24× at 512. So below roughly 64 the GPU is slower, and
+the case for it grows with the problem. Both paths truncate
+identically, and the reported fidelities agree to every digit.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <p>Reordering under <code>traversal</code> applies only to the fusable gates <em>between</em>
+state-reading or measuring instructions. Measurement, reset, channel,
+observable (<code>Amplitude</code> / <code>BondDim</code> / <code>SchmidtRank</code> /
+<code>ExpectationValue</code>), barrier and <code>IfStatement</code> stay put and act as
+synchronisation points. Within a gate run, two gates are ordered relative
+to each other only when they share a qubit.</p>
+<p>Which engines a wheel carries depends on the platform, because the compute
+core binds the CBLAS <em>and</em> LAPACKE interfaces directly and no one provider
+supplies both everywhere: Linux x86-64 ships OpenBLAS and MKL, macOS arm64
+OpenBLAS only (MKL is x86-only), Windows x86-64 MKL only. This is why
+<code>usemkl</code> defaults to <code>None</code> rather than to an engine name.</p>
+<p>Each engine is a separate native module, so <code>usemkl</code> and <code>usegpu</code> are
+per instance and simulators on different engines can run side by side in one
+process. Their objects do <strong>not</strong> interoperate: an :class:<code>~tensorweaver.MPS</code>,
+:class:<code>~tensorweaver.MPO</code>, <code>Rng</code> or :class:<code>~tensorweaver.TwState</code> built
+by one engine cannot be passed to a simulator or method using the other,
+which raises <code>TypeError</code>. To carry a state across engines, round-trip it
+through <code>MPS.serialize()</code> and <code>MPS.deserialize()</code>, which copies it.</p>
+<p><strong>Caveats</strong></p>
+<ul>
+<li><code>num_qubits=</code> on :meth:<code>execute</code> is a TensorWeaver-specific
+  kwarg (also accepted by :class:<code>quantanium.QuantaniumQCS</code>);
+  :class:<code>mimiqengines.MPSSimulator</code> does not expose it. Code that
+  drives the three simulators with a portable
+  <code>sim.execute(c, nsamples=100, seed=42)</code> shape is unaffected.</li>
+<li>Amplitudes requested in trajectory mode reflect the <em>last shot's</em> state,
+  not an ensemble average, whenever the circuit contains a mid-circuit
+  measure, reset or <code>IfStatement</code>.</li>
+<li>RNG resolution priority: a call-site <code>seed=</code> beats the instance
+  <code>seed</code>, which beats fresh entropy from :mod:<code>secrets</code>. The free
+  function <code>tensorweaver.execute(...)</code> defaults to <code>seed=42</code>; this
+  method resolves to a concrete int before forwarding, so the two surfaces
+  never collide.</li>
+<li>:meth:<code>bind</code> substitutes parameters and re-runs the full compile
+  pipeline; there is no native parametric fast path.</li>
+<li>:meth:<code>evolve</code> returns <code>(state, TruncationLowerBound)</code> and never
+  promotes to <code>ExactFidelity</code> even when <code>fid == 1.0</code>, because each MPO
+  application is an SVD truncation event whose fidelity is at best a lower
+  bound.</li>
+</ul>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; import mimiqcircuits as mc
+&gt;&gt;&gt; from tensorweaver import TwSimulator
+&gt;&gt;&gt; sim = TwSimulator(bonddim=64)
+&gt;&gt;&gt; c = mc.Circuit()
+&gt;&gt;&gt; c.push(mc.GateH(), 0)
+...
+&gt;&gt;&gt; c.push(mc.GateCX(), 0, 1)
+...
+&gt;&gt;&gt; c.push(mc.Measure(), [0, 1], [0, 1])
+...
+&gt;&gt;&gt; results = sim.execute(c, nsamples=100, seed=42)
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.capabilities" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">capabilities</span><span class="p">()</span></code>
+
+<a href="#tensorweaver.TwSimulator.capabilities" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Capability tokens this simulator can serve.</p>
+<p>A copy, so a caller cannot mutate the class-level set.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.limits" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">limits</span><span class="p">()</span></code>
+
+<a href="#tensorweaver.TwSimulator.limits" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Resource limits: the configured <code>bonddim</code> as <code>max_bond_dim</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.topology" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">topology</span><span class="p">()</span></code>
+
+<a href="#tensorweaver.TwSimulator.topology" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Connectivity assumed by the MPS evolution: all-to-all.</p>
+<p>Long-range gates cost more bond dimension than neighbouring ones, but
+no routing or SWAP insertion is required of the caller.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.build_state" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">build_state</span><span class="p">(</span><span class="n">nq</span><span class="p">,</span> <span class="n">nb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">_</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwSimulator.build_state" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Allocate a fresh <code>|0…0⟩</code> state on <code>nq</code> qubits.</p>
+<p>The MPS is capped at this simulator's <code>bonddim</code> and built on this
+simulator's engine, so it can only be used with this simulator.
+<code>nb</code> and <code>nz</code> size the classical-bit and complex registers.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.zerostate" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">zerostate</span><span class="p">(</span><span class="n">nq</span><span class="p">,</span> <span class="n">nb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwSimulator.zerostate" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Back-compat alias for :meth:<code>build_state</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.evolvezerostate" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">evolvezerostate</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwSimulator.evolvezerostate" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Evolve a fresh zero state through <code>circuit</code> and return it.</p>
+<p>Returns <code>(state, fidelity)</code>, the fidelity being a plain <code>float</code>
+lower bound on the evolved state. This is a single evolution, so a
+circuit with mid-circuit measurement or noise gives one trajectory,
+not an ensemble; use :meth:<code>execute</code> for that.</p>
+<p>Seed resolution: call-site <code>seed=</code>, then the instance <code>seed</code>, then
+fresh cryptographic entropy from :mod:<code>secrets</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.compile" class="doc doc-heading">
+            <code class="highlight language-python"><span class="nb">compile</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwSimulator.compile" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Lower <code>circuit</code> for the MPS evolution loop.</p>
+<p>Populates :attr:<code>CompileMetadata.active_qubits</code> and, when
+<code>reorderqubits</code> is enabled, folds an MPS-friendly qubit permutation
+into the wrapped source circuit and into
+:attr:<code>CompileMetadata.qubit_permutation</code>. Decomposition to
+<code>TensorWeaverBasis</code> and fusion into MPOs happen later, in
+:meth:<code>evolve</code>.</p>
+<p>A circuit with no inter-qubit couplings to reorder passes through
+untouched: the wrapped <code>source</code> is the input <code>circuit</code> itself.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.default_passes" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">default_passes</span><span class="p">()</span></code>
+
+<a href="#tensorweaver.TwSimulator.default_passes" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>No passes run by default.</p>
+<p>Reorder lives inside :meth:<code>compile</code>, so it runs whenever
+<code>reorderqubits</code> is set without the user having to build a
+:class:<code>PassPipeline</code>. :class:<code>~tensorweaver.TwReorderQubitsPass</code> is
+exported as the explicit alternative: pass it through
+<code>execute(..., passes=PassPipeline([...]))</code> to swap the reorder
+strategy or to compare implementations.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.expectation" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">expectation</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="o">*</span><span class="n">qubits</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwSimulator.expectation" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute <code>⟨ψ|op|ψ⟩</code> on <code>state</code> without mutating it.</p>
+<p>Exact, with no sampling involved. Supports 1- and 2-qubit operators
+and a :class:<code>PauliString</code> of any length. <code>qubits</code> are the 0-based
+indices <code>op</code> acts on, in the operator's own leg order, and there
+must be exactly as many as the operator has qubits.</p>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>if the qubit count does not match the operator, or if
+a dense operator acts on three or more qubits.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.evolve" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">evolve</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">compiled</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stopped</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwSimulator.evolve" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Evolve <code>state</code> under <code>compiled</code>, in place.</p>
+<p>Returns <code>(state, TruncationLowerBound)</code>. The product of the per-step
+fidelities is always wrapped as :class:<code>TruncationLowerBound</code>, never
+collapsed to :class:<code>ExactFidelity</code> even at <code>fid == 1.0</code>, because
+that scalar bounds the fidelity from below rather than claiming the
+exact state was reproduced.</p>
+<p>The state is evolved in the reordered-MPS frame, since <code>compiled</code>
+already carries the qubit permutation :meth:<code>compile</code> chose, so samples
+and amplitudes come back in that frame. Translation to the user frame
+happens at read-out: :meth:<code>_execute_sampling</code> remaps the sampling
+projection with the permutation on <code>compiled.metadata</code>.</p>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>if <code>compiled</code> is not a :class:<code>CompiledCircuit</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.apply_segment" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">apply_segment</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">insts</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwSimulator.apply_segment" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fuse a run of loss-free instructions into MPOs and apply it.</p>
+<p>Returns the truncation fidelity of the run. Every qubit in the run is
+present, so fusing it cannot bury an operation a fired loss should have
+dropped. The run is padded to the register width, so one that misses
+the high qubits still builds full-width MPOs.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.apply_instruction" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">apply_instruction</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">inst</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwSimulator.apply_instruction" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Apply a single instruction the driver issues around a loss boundary.</p>
+<p>These are a reload <code>Reset</code>, a <code>Check</code> or <code>MeasureCheck</code>
+<code>SetBit</code>, or a partial-loss rewrite. A multi-qubit gate has to be
+fused into an MPO, so it is routed through :meth:<code>apply_segment</code>;
+everything else applies directly to the MPS.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.sample_kraus" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">sample_kraus</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwSimulator.sample_kraus" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Sample one branch of a Kraus channel against the live state and apply it.</p>
+<p>Returns <code>(fidelity, fired_operator)</code>. The operator returned is the
+original one, not a reconstruction, so a <code>LossyOperator</code> branch
+reaches the driver with its tag intact.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwSimulator.execute" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">execute</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_qubits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">passes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fuse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fuse_threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">canonicaldecompose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reorderqubits</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">remove_swaps</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">strict_pass_order</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stopped</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwSimulator.execute" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Execute <code>circuit</code> and return :class:<code>QCSResults</code>.</p>
+<p>The TensorWeaver configuration (<code>bonddim</code>, <code>entdim</code>, <code>sv_cutoff</code>,
+<code>mpo_cutoff</code>, <code>algorithm</code>, <code>post_compress</code>, <code>reorderqubits*</code>,
+<code>buffer</code>, <code>traversal</code>, <code>usemkl</code>) comes from the constructor, not
+from this call. Amplitudes and expectation values are requested by
+putting :class:<code>Amplitude</code> and :class:<code>ExpectationValue</code> operations in
+the circuit; they write into <code>results.zstates</code>.</p>
+<p>Whether the run is a single evolution plus <code>nsamples</code> draws, or
+<code>nsamples</code> independent trajectories, follows from the circuit; see
+the class docstring.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>circuit</code>
+            </td>
+            <td>
+                  <code><span title="mimiqcircuits.Circuit">Circuit</span> | <span title="list">list</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>One circuit, or a list of circuits to run in turn.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>nsamples</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Bitstrings to draw in sampling mode, or trajectories to
+run in trajectory mode. Default <code>1000</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>1000</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>seed</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Master RNG seed for this run. Overrides the instance
+<code>seed</code>. Mutually exclusive with <code>rng</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>rng</code>
+            </td>
+            <td>
+                  <code><span title="random.Random">Random</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A :class:<code>random.Random</code> to draw the run's seeds from.
+Mutually exclusive with <code>seed</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>num_qubits</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Width of the simulated register. <code>None</code> (default)
+infers it from the circuit. This keyword is
+TensorWeaver-specific.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>passes</code>
+            </td>
+            <td>
+                  <code><span title="mimiqcircuits.backends.PassPipeline">PassPipeline</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Explicit circuit-preparation pipeline. Overrides the
+shorthands below, and it is an error to pass both.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>fuse</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Fuse runs of gates into <code>GateCustom</code> blocks before
+evolution (the client-side <code>FusePass</code>). Default <code>False</code>.
+This is distinct from, and usually redundant with, the MPO
+fusion this simulator does internally while evolving.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>fuse_threshold</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Minimum qubit count for <code>fuse</code> to act.
+Default <code>0</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>canonicaldecompose</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Decompose to the canonical basis before
+evolution. Default <code>False</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>reorderqubits</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | <span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Follows the base contract, where reordering is a
+server-side pass, so setting it here raises locally. Qubit
+reordering on this simulator is the constructor knob of the
+same name, run natively in :meth:<code>compile</code>; alternatively pass
+<code>passes=PassPipeline([TwReorderQubitsPass(...)])</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>remove_swaps</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>As <code>reorderqubits</code>: server-side only, raises when
+set locally.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>callback</code>
+            </td>
+            <td>
+                  <code><span title="object">object</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Called as <code>callback(applied, total)</code> as the evolution
+progresses. <code>total</code> is <code>None</code> because MPOs are fused
+lazily and the count is not known up front.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>param_grid</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of parameter dicts. Each is substituted into the
+circuit and executed with its own derived seed, and the return
+value becomes a list of results, one per grid point.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>strict_pass_order</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Enforce the pass pipeline's declared ordering
+constraints. Default <code>True</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>stopped</code>
+            </td>
+            <td>
+                  <code><span title="object">object</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Cooperative cancellation handle checked during evolution.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>progress</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Show a progress display. Default <code>False</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>A</code></td>            <td>
+                  <code><span title="mimiqcircuits.QCSResults">QCSResults</span> | <span title="list">list</span>[<span title="mimiqcircuits.QCSResults">QCSResults</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>QCSResults</code>, or a list of them when <code>circuit</code> is a list</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td></td>            <td>
+                  <code><span title="mimiqcircuits.QCSResults">QCSResults</span> | <span title="list">list</span>[<span title="mimiqcircuits.QCSResults">QCSResults</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>or <code>param_grid</code> is given. <code>cstates</code> are always</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td></td>            <td>
+                  <code><span title="mimiqcircuits.QCSResults">QCSResults</span> | <span title="list">list</span>[<span title="mimiqcircuits.QCSResults">QCSResults</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>BitString</code>, in both sampling and trajectory mode.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>if both <code>seed</code> and <code>rng</code> are given.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>if both <code>passes</code> and the shorthands are given.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="NotImplementedError">NotImplementedError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>if <code>reorderqubits</code> or <code>remove_swaps</code> is
+set on this call.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h3 id="twstate">TwState<a class="headerlink" href="#twstate" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="tensorweaver.TwState"></a>
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="mimiqcircuits.backends.State">State</span></code></p>
+
+
+
+        <p>Composite simulation state: MPS, classical bits, and z-vars.</p>
+<p>Subclasses :class:<code>mimiqcircuits.backends.State</code>. Build one with
+:meth:<code>TwSimulator.build_state</code> or :meth:<code>TwSimulator.evolvezerostate</code>;
+constructing it directly is for advanced use, and requires passing the
+<code>core</code> the MPS came from.</p>
+<p>Instructions mutate all three registers in place as a circuit is evolved:
+gates and channels act on <code>mps</code>, measurements write into <code>c</code>, and the
+observable operations write into <code>z</code>.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="tensorweaver.TwState.mps">mps</span></code></td>
+            <td>
+                  <code><span title="tensorweaver._core_mkl.PyMps">PyMps</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>the tensor-network quantum register.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tensorweaver.TwState.c">c</span></code></td>
+            <td>
+                  <code><span title="list">list</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>classical-bit register.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tensorweaver.TwState.z">z</span></code></td>
+            <td>
+                  <code><span title="list">list</span>[<span title="complex">complex</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>complex z-variable register.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="tensorweaver.TwState.classical_bits" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">classical_bits</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#tensorweaver.TwState.classical_bits" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Live view of the classical-bit register.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="tensorweaver.TwState.complex_values" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">complex_values</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#tensorweaver.TwState.complex_values" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Live view of the complex z-register.</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwState.get_loss_state" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_loss_state</span><span class="p">()</span></code>
+
+<a href="#tensorweaver.TwState.get_loss_state" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Per-qubit present/lost register.</p>
+<p>Mutated only by the shared runtime-loss driver
+(:meth:<code>LocalBackend.evolve_with_loss</code>), and left at all-present on
+circuits without qubit loss.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwState.amplitude" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">amplitude</span><span class="p">(</span><span class="n">bitstring</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwState.amplitude" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p><code>⟨bitstring|ψ⟩</code>. Qubit 0 is the LSB (little-endian).</p>
+<p><code>bitstring</code> is read in the same qubit frame as the underlying MPS.
+Reorder passes rewrite the embedded <code>bs</code> of every <code>Amplitude</code> op
+when they fire (see :func:<code>Circuit.reorder_qubits</code>), so a caller
+issuing <code>Amplitude(bs)</code> from a circuit does not need to permute the
+bitstring; a caller reaching into this method with a hand-built
+bitstring on a reordered state does.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwState.sample" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">sample</span><span class="p">(</span><span class="n">nsamples</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TwState.sample" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Sample <code>nsamples</code> measurement outcomes as :class:<code>BitString</code>\ s.</p>
+<p>Sampling does not collapse the state, so the same state can be sampled
+repeatedly. Either <code>rng</code> (a :class:<code>random.Random</code>) or <code>seed</code> (an
+<code>int</code>) may be passed, but not both: the native <code>Rng</code> takes a single
+integer, which is drawn from <code>rng</code> when one is given and from
+:mod:<code>secrets</code> when neither is.</p>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>if both <code>rng</code> and <code>seed</code> are given.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TwState.reset" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">reset</span><span class="p">()</span></code>
+
+<a href="#tensorweaver.TwState.reset" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Always raises: resetting a state in place is not supported.</p>
+<p>Rebuilding the MPS needs the bond-dimension cap, which is simulator
+configuration and not carried on the state. Call
+<code>sim.build_state(nq, nb, nz)</code> for a fresh state instead.</p>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="NotImplementedError">NotImplementedError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>always.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h3 id="tensorweaverbasis">TensorWeaverBasis<a class="headerlink" href="#tensorweaverbasis" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="tensorweaver.TensorWeaverBasis"></a>
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="mimiqcircuits.decomposition.abstract.DecompositionBasis">DecompositionBasis</span></code></p>
+
+
+
+        <p>Decomposition basis targeting TensorWeaver's native gate set.</p>
+<p>Terminal operations, executed directly by TensorWeaver:
+    - <strong>1Q parametric</strong>: <code>GateRX</code>, <code>GateRY</code>, <code>GateRZ</code>, <code>GateU</code>
+    - <strong>1Q generic</strong>: any 1-qubit unitary gate, applied from its matrix
+    - <strong>1Q identity</strong>: <code>GateID</code>, skipped during execution
+    - <strong>2Q optimized</strong>: <code>GateCX</code>, <code>GateCZ</code>, <code>GateISWAP</code>
+    - <strong>2Q generic</strong>: any 2-qubit unitary gate, fused into an MPO from its
+      matrix
+    - <strong>Multi-controlled</strong>: <code>Control(n, 1Q-gate)</code>, any number of controls
+    - <strong>Measurement/reset</strong>: <code>Measure</code>, <code>Reset</code>, <code>MeasureReset</code>
+    - <strong>Conditional</strong>: <code>IfStatement</code>, terminal when its inner operation is
+    - <strong>Z-variable ops</strong>: <code>Amplitude</code>, <code>BondDim</code>, <code>SchmidtRank</code>,
+      <code>VonNeumannEntropy</code>, <code>ExpectationValue</code>, all of which observe the
+      state without changing it
+    - <strong>Classical</strong>: <code>AbstractClassical</code> logic (<code>Not</code>, <code>And</code>, <code>Or</code>,
+      <code>Xor</code>, <code>ParityCheck</code>, <code>SetBit0</code>/<code>SetBit1</code>) and the z-register
+      arithmetic <code>Add</code>, <code>Multiply</code>, <code>Pow</code>
+    - <strong>Noise channels</strong>: any <code>krauschannel</code> subclass, Kraus or mixed
+      unitary
+    - <strong>Scheduling</strong>: <code>Barrier</code>, a gate-fusion boundary with no effect on
+      the state
+    - <strong>Annotations</strong>: <code>AbstractAnnotation</code>, which carries no simulation
+      semantics</p>
+<p>Anything else is decomposed through the canonical rewrite rule, which
+delegates to each gate's <code>_decompose()</code>. A gate that neither is terminal
+nor decomposes raises :class:<code>DecompositionError</code>.</p>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <blockquote>
+<blockquote>
+<blockquote>
+<p>from mimiqcircuits import Circuit, GateCCX, GateH
+from mimiqcircuits.decomposition import decompose
+from tensorweaver.basis import TensorWeaverBasis
+c = Circuit()
+c.push(GateH(), 0)
+1-qubit circuit with 1 instruction:
+└── H @ q[0]
+<BLANKLINE>
+c.push(GateCCX(), 0, 1, 2)
+3-qubit circuit with 2 instructions:
+├── H @ q[0]
+└── C₂X @ q[0:1], q[2]
+<BLANKLINE>
+decomposed = decompose(c, TensorWeaverBasis())</p>
+<h4 id="tensorweaver.TensorWeaverBasis--ccx-stays-as-control2-gatex-dispatched-to-apply_controlled_gate">CCX stays as Control(2, GateX), dispatched to apply_controlled_gate<a class="headerlink" href="#tensorweaver.TensorWeaverBasis--ccx-stays-as-control2-gatex-dispatched-to-apply_controlled_gate" title="Permanent link">&para;</a></h4>
+</blockquote>
+</blockquote>
+</blockquote>
+</details>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TensorWeaverBasis.isterminal" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">isterminal</span><span class="p">(</span><span class="n">op</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TensorWeaverBasis.isterminal" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Whether <code>op</code> can be executed natively, without decomposing it.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="tensorweaver.TensorWeaverBasis.decompose" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">decompose</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">qubits</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="n">zvars</span><span class="p">)</span></code>
+
+<a href="#tensorweaver.TensorWeaverBasis.decompose" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Decompose a non-terminal operation through the canonical rewrite.</p>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="mimiqcircuits.decomposition.abstract.DecompositionError">DecompositionError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>if the canonical rewrite has no rule for <code>op</code>,
+which means the circuit cannot be lowered onto this basis.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><hr />
+<h2 id="core-classes">Core Classes<a class="headerlink" href="#core-classes" title="Permanent link">&para;</a></h2>
+<p><code>MPS</code>, <code>MPO</code>, and <code>Rng</code> are native classes. The tables below index their
+methods; each method's own docstring is available with <code>help()</code>.</p>
+<h3 id="mps">MPS<a class="headerlink" href="#mps" title="Permanent link">&para;</a></h3>
+<p>A quantum state as a chain of tensors with bounded bond dimension.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MPS.zero_state(num_qubits, max_bond_dim)</code></td>
+<td>The <code>\|00...0⟩</code> state</td>
+</tr>
+<tr>
+<td><code>MPS.product_state(states, max_bond_dim)</code></td>
+<td>From a list of 0/1 values</td>
+</tr>
+<tr>
+<td><code>MPS.random_maxent_state(num_qubits, max_bond_dim, rng)</code></td>
+<td>Random maximally entangled state</td>
+</tr>
+<tr>
+<td><code>MPS.zero_state_qudits(physical_dims, max_bond_dim)</code></td>
+<td>Qudit <code>\|0…0⟩</code> on sites of the given per-site dimensions (each ≥ 2)</td>
+</tr>
+<tr>
+<td><code>MPS.product_state_qudits(digits, physical_dims, max_bond_dim)</code></td>
+<td>Qudit product state from per-site levels (<code>digits[i] &lt; physical_dims[i]</code>)</td>
+</tr>
+<tr>
+<td><code>MPS.deserialize(data)</code></td>
+<td>From protobuf bytes</td>
+</tr>
+</tbody>
+</table>
+<p>Sites carry any physical dimension <code>d ≥ 2</code>, reported per site by
+<code>mps.physical_dims</code>. A 2×2 or 4×4 qubit gate applied to a <code>d &gt; 2</code> site acts on
+the <code>{\|0⟩, \|1⟩}</code> subspace. See example 13.</p>
+<p><strong>Gate application</strong> (returns fidelity; always 1.0 for single-qubit gates)</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mps.apply_rx(theta, qubit)</code></td>
+<td>RX rotation</td>
+</tr>
+<tr>
+<td><code>mps.apply_ry(theta, qubit)</code></td>
+<td>RY rotation</td>
+</tr>
+<tr>
+<td><code>mps.apply_rz(lmbda, qubit)</code></td>
+<td>RZ rotation</td>
+</tr>
+<tr>
+<td><code>mps.apply_u(theta, phi, lmbda, gamma, qubit)</code></td>
+<td>General U gate</td>
+</tr>
+<tr>
+<td><code>mps.apply_gate_1q(gate, qubit)</code></td>
+<td>Arbitrary 1-qubit gate</td>
+</tr>
+<tr>
+<td><code>mps.apply_gate_2q(gate, q1, q2, *, center="right")</code></td>
+<td>Arbitrary 2-qubit gate. Skips the post-application compression sweep; pair with <code>mps.compress()</code>. <code>center</code> selects which site holds the orthogonality center afterwards</td>
+</tr>
+<tr>
+<td><code>mps.apply_two_qubit_gate(...)</code></td>
+<td>Deprecated alias for <code>apply_gate_2q</code>; emits a <code>DeprecationWarning</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>MPO application</strong> (returns fidelity, below 1.0 when truncation discards weight)</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mps.apply_mpo(mpo, sv_cutoff=None, algorithm=None, post_compress=True)</code></td>
+<td>Apply an operator. <code>algorithm</code> is <code>"dmpo"</code> (the default at this level), <code>"cmpo"</code>, <code>"vmpoa"</code>, or <code>"vmpob"</code></td>
+</tr>
+<tr>
+<td><code>mps.apply_mpo_dmpo(mpo, sv_cutoff=None)</code></td>
+<td>Wrapper for <code>algorithm="dmpo"</code></td>
+</tr>
+<tr>
+<td><code>mps.apply_mpo_cmpo(mpo, sv_cutoff=None)</code></td>
+<td>Wrapper for <code>algorithm="cmpo"</code></td>
+</tr>
+<tr>
+<td><code>mps.apply_mpo_vmpoa(mpo, sv_cutoff=None)</code></td>
+<td>Wrapper for <code>algorithm="vmpoa"</code></td>
+</tr>
+<tr>
+<td><code>mps.apply_mpo_vmpob(mpo, sv_cutoff=None)</code></td>
+<td>Wrapper for <code>algorithm="vmpob"</code></td>
+</tr>
+<tr>
+<td><code>mps.compress(sv_cutoff=None)</code></td>
+<td>Global compression sweep, restoring canonical form. <code>None</code> or non-positive uses the library default <code>1e-7</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">The default algorithm differs by level</p>
+<p><code>apply_mpo</code> defaults to <code>"dmpo"</code>, the low-level primitive's own default.
+<code>TwSimulator</code> and <code>execute()</code> default to <code>"vmpoa"</code>, which is more accurate
+at a given bond dimension. Driving the MPS yourself does not inherit the
+simulator's choice.</p>
+</div>
+<p><strong>Deferred compression</strong></p>
+<p>Skipping the per-call compression sweep and running one pass at a quiet point
+is faster for a batch of two-qubit gates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">tensorweaver</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tw</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">mps</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">MPS</span><span class="o">.</span><span class="n">zero_state</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">max_bond_dim</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">mpo</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">MPO</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">max_bond_dim</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">mpo</span><span class="o">.</span><span class="n">apply_cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">mpo</span><span class="o">.</span><span class="n">apply_cz</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">mps</span><span class="o">.</span><span class="n">apply_mpo</span><span class="p">(</span><span class="n">mpo</span><span class="p">,</span> <span class="n">post_compress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">gate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">)</span>      <span class="c1"># any 4x4 unitary</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">mps</span><span class="o">.</span><span class="n">apply_gate_2q</span><span class="p">(</span><span class="n">gate</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1"># One sweep at quiescence: before measuring, reading an observable,</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># or at the end of the circuit.</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">mps</span><span class="o">.</span><span class="n">compress</span><span class="p">()</span>
+</code></pre></div>
+<p>Deferring the sweep leaves the state out of canonical form, so a later
+truncation compares singular values that are no longer the physical Schmidt
+weights. Batch only gates you know keep the bond dimension well below the cap,
+and prefer <code>"cmpo"</code> or <code>"vmpoa"</code> if unsure. See
+<a href="../concepts/#canonical-form-and-the-orthogonality-center">canonical form</a>.</p>
+<p><strong>Noise channels</strong> (return <code>(fidelity, index)</code>, where <code>index</code> is the 0-based
+sampled Kraus operator or unitary)</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mps.apply_kraus_1q(kraus_ops, site, rng, *, validate=True)</code></td>
+<td>General 1-qubit Kraus channel</td>
+</tr>
+<tr>
+<td><code>mps.apply_kraus_2q(kraus_ops, site1, site2, rng, *, validate=True)</code></td>
+<td>General 2-qubit Kraus channel</td>
+</tr>
+<tr>
+<td><code>mps.apply_mixed_unitary_1q(unitaries, probs, site, rng, *, validate=True)</code></td>
+<td>1-qubit mixed-unitary channel</td>
+</tr>
+<tr>
+<td><code>mps.apply_mixed_unitary_2q(unitaries, probs, site1, site2, rng, *, validate=True)</code></td>
+<td>2-qubit mixed-unitary channel</td>
+</tr>
+</tbody>
+</table>
+<p>With <code>validate=True</code> (the default), Kraus channels check completeness
+(<code>‖Σᵢ Kᵢ† Kᵢ − I‖_F ≤ 1e-8</code>) and mixed-unitary channels check that the
+probabilities sum to 1 within <code>1e-8</code>. Failures raise <code>KrausCompletenessError</code>.
+An incomplete operator set produces a non-physical state silently, which is why
+the check is on by default; <code>validate=False</code> is for post-selection and
+projective channels, where incompleteness is intended.</p>
+<p><strong>Measurement and sampling</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mps.measure_qubit(rng, qubit)</code></td>
+<td><code>int</code>, the measured bit; collapses the state</td>
+</tr>
+<tr>
+<td><code>mps.sample_bitstring(rng)</code></td>
+<td><code>list[int]</code>, one bitstring</td>
+</tr>
+<tr>
+<td><code>mps.sample(rng, num_samples)</code></td>
+<td><code>list[list[int]]</code></td>
+</tr>
+<tr>
+<td><code>mps.amplitude(bitstring)</code></td>
+<td><code>complex</code>, <code>⟨bitstring\|ψ⟩</code></td>
+</tr>
+<tr>
+<td><code>mps.reset_qubit(rng, qubit)</code></td>
+<td><code>int</code>, the pre-reset outcome; leaves the qubit in |0⟩</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observables</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mps.expectation_1q(op, site)</code></td>
+<td><code>complex</code>, <code>⟨ψ\|O\|ψ⟩</code> for a 1-qubit operator</td>
+</tr>
+<tr>
+<td><code>mps.expectation_2q(op, site1, site2)</code></td>
+<td><code>complex</code>, for a 2-qubit operator</td>
+</tr>
+<tr>
+<td><code>mps.expectation_prod(ops, sites)</code></td>
+<td><code>complex</code>, for a product of single-site operators</td>
+</tr>
+<tr>
+<td><code>mps.schmidt_values(bond)</code></td>
+<td><code>ndarray[float64]</code>, singular values at the bond, decreasing</td>
+</tr>
+<tr>
+<td><code>mps.schmidt_rank(bond, cutoff=1e-15)</code></td>
+<td><code>int</code>, singular values above <code>cutoff</code>; minimum 1</td>
+</tr>
+<tr>
+<td><code>mps.von_neumann_entropy(bond)</code></td>
+<td><code>float</code>, <code>S = -Σ pᵢ ln pᵢ</code> in nats</td>
+</tr>
+<tr>
+<td><code>mps.all_entropies()</code></td>
+<td><code>list[float]</code>, the entropy of every interior bond</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mps.num_qubits</code></td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td><code>mps.physical_dims</code></td>
+<td><code>list[int]</code>, per-site dimension</td>
+</tr>
+<tr>
+<td><code>mps.max_bond_dim</code></td>
+<td><code>int</code>, the configured cap</td>
+</tr>
+<tr>
+<td><code>mps.max_used_bond_dim</code></td>
+<td><code>int</code>, the largest bond actually in use</td>
+</tr>
+<tr>
+<td><code>mps.orth_center</code></td>
+<td><code>int</code>, current orthogonality center</td>
+</tr>
+<tr>
+<td><code>mps.bond_dim(i)</code></td>
+<td><code>int</code>, bond dimension at cut <code>i</code></td>
+</tr>
+<tr>
+<td><code>mps.all_bond_dims()</code></td>
+<td><code>list[int]</code></td>
+</tr>
+<tr>
+<td><code>mps.norm_squared()</code></td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td><code>mps.normalize()</code></td>
+<td><code>float</code>, the norm before normalising</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tensor access and copying</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mps.tensor(site)</code></td>
+<td><code>ndarray[complex128]</code> of shape <code>(left_bond, phys, right_bond)</code>, Fortran order</td>
+</tr>
+<tr>
+<td><code>mps.set_tensor(site, arr)</code></td>
+<td>Overwrite a site tensor. Can invalidate canonical form; follow with <code>recanonicalize()</code></td>
+</tr>
+<tr>
+<td><code>mps.tensor_element(site, left, phys, right)</code></td>
+<td><code>complex</code>, one entry</td>
+</tr>
+<tr>
+<td><code>mps.shift_orth_center(target)</code></td>
+<td>Move the orthogonality center</td>
+</tr>
+<tr>
+<td><code>mps.recanonicalize(target=0)</code></td>
+<td>Restore canonical form with the center at <code>target</code></td>
+</tr>
+<tr>
+<td><code>mps.clone_mps()</code></td>
+<td>Deep copy; <code>copy.copy</code> and <code>copy.deepcopy</code> also work</td>
+</tr>
+<tr>
+<td><code>mps.overlap(other)</code></td>
+<td><code>complex</code>, <code>⟨ψ\|φ⟩</code></td>
+</tr>
+<tr>
+<td><code>mps.fidelity(other)</code></td>
+<td><code>float</code>, <code>\|⟨ψ\|φ⟩\|²</code></td>
+</tr>
+<tr>
+<td><code>mps.serialize()</code></td>
+<td><code>bytes</code> (protobuf)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Device residency</strong></p>
+<p>Present on every engine, so a caller asks rather than testing for the
+attribute. Only <code>to_device()</code> needs the CUDA engine; the other two answer on a
+CPU engine, where a state is already where they want it. See
+<a href="../execute/#gpu-engine-usegpu">GPU engine</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mps.to_device()</code></td>
+<td>Move the state into device memory. Raises <code>GpuError</code> on an engine with no device path, or when no GPU is reachable</td>
+</tr>
+<tr>
+<td><code>mps.to_host()</code></td>
+<td>Move it back. A no-op on a host-resident state</td>
+</tr>
+<tr>
+<td><code>mps.is_on_device</code></td>
+<td><code>bool</code>, whether the state currently lives on the device</td>
+</tr>
+</tbody>
+</table>
+<p><code>TwSimulator(usegpu=True)</code> does both moves for you, so these are for drivers
+built by hand.</p>
+<hr />
+<h3 id="mpo">MPO<a class="headerlink" href="#mpo" title="Permanent link">&para;</a></h3>
+<p>An operator as a chain of tensors, applied to a state with
+<code>mps.apply_mpo(mpo)</code>.</p>
+<p><strong>Constructors</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MPO.identity(num_qubits, max_bond_dim)</code></td>
+<td>Identity operator</td>
+</tr>
+<tr>
+<td><code>MPO.identity_with_dims(physical_dims, max_bond_dim)</code></td>
+<td>Identity on sites of the given per-site dimensions (each ≥ 2)</td>
+</tr>
+<tr>
+<td><code>MPO.deserialize(data)</code></td>
+<td>From protobuf bytes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gate application</strong> (returns <code>True</code>, or <code>False</code> when the gate would push the
+bond dimension past <code>max_bond_dim</code>)</p>
+<p>Every method takes a keyword-only <code>side</code> selecting the physical leg the gate
+multiplies into: <code>"output"</code> (the default) gives <code>M' = G·M</code>, <code>"input"</code> gives
+<code>M' = M·G</code>. The two-qubit methods also take <code>sv_cutoff</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mpo.apply_gate_1q(gate, site, *, side="output")</code></td>
+<td>Arbitrary 1-qubit gate</td>
+</tr>
+<tr>
+<td><code>mpo.apply_gate_2q(gate, q1, q2, *, side="output", sv_cutoff=None)</code></td>
+<td>Arbitrary 2-qubit gate</td>
+</tr>
+<tr>
+<td><code>mpo.apply_cx(control, target, *, side="output", sv_cutoff=None)</code></td>
+<td>CNOT</td>
+</tr>
+<tr>
+<td><code>mpo.apply_cz(q1, q2, *, side="output", sv_cutoff=None)</code></td>
+<td>CZ</td>
+</tr>
+<tr>
+<td><code>mpo.apply_iswap(q1, q2, *, side="output", sv_cutoff=None)</code></td>
+<td>iSWAP</td>
+</tr>
+<tr>
+<td><code>mpo.apply_rx(theta, site, *, side="output")</code></td>
+<td>RX rotation</td>
+</tr>
+<tr>
+<td><code>mpo.apply_ry(theta, site, *, side="output")</code></td>
+<td>RY rotation</td>
+</tr>
+<tr>
+<td><code>mpo.apply_rz(lmbda, site, *, side="output")</code></td>
+<td>RZ rotation</td>
+</tr>
+<tr>
+<td><code>mpo.apply_u(theta, phi, lmbda, gamma, site, *, side="output")</code></td>
+<td>General U gate</td>
+</tr>
+<tr>
+<td><code>mpo.apply_controlled_gate(unitary, controls, target, *, side="output", sv_cutoff=None)</code></td>
+<td>Multi-controlled gate, any number of controls</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Normalisation</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mpo.ensure_operator_norm()</code></td>
+<td>Convert to operator norm (identity = δ). No-op if already there</td>
+</tr>
+<tr>
+<td><code>mpo.ensure_trace_norm()</code></td>
+<td>Convert to trace norm (<code>Tr(A†A) = 1</code> per site). No-op if already there</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties and other methods</strong></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mpo.num_qubits</code></td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td><code>mpo.physical_dims</code></td>
+<td><code>list[int]</code>, per-site dimension</td>
+</tr>
+<tr>
+<td><code>mpo.max_bond_dim</code></td>
+<td><code>int</code>, the configured cap</td>
+</tr>
+<tr>
+<td><code>mpo.max_used_bond_dim</code></td>
+<td><code>int</code>, the largest bond actually in use</td>
+</tr>
+<tr>
+<td><code>mpo.bond_dim(i)</code></td>
+<td><code>int</code>, bond dimension at cut <code>i</code></td>
+</tr>
+<tr>
+<td><code>mpo.all_bond_dims()</code></td>
+<td><code>list[int]</code></td>
+</tr>
+<tr>
+<td><code>mpo.norm</code></td>
+<td><code>str</code>, <code>'Operator'</code> or <code>'Trace'</code></td>
+</tr>
+<tr>
+<td><code>mpo.tensor(site)</code></td>
+<td><code>ndarray[complex128]</code> of shape <code>(left_bond, d_in, d_out, right_bond)</code>, Fortran order</td>
+</tr>
+<tr>
+<td><code>mpo.set_tensor(site, arr)</code></td>
+<td>Overwrite a site tensor</td>
+</tr>
+<tr>
+<td><code>mpo.tensor_element(site, left, s_in, s_out, right)</code></td>
+<td><code>complex</code>, one entry</td>
+</tr>
+<tr>
+<td><code>mpo.shift_orth_center(target)</code></td>
+<td>Move the orthogonality center</td>
+</tr>
+<tr>
+<td><code>mpo.clone_mpo()</code></td>
+<td>Deep copy</td>
+</tr>
+<tr>
+<td><code>mpo.dagger()</code></td>
+<td><code>MPO</code>, the adjoint (the inverse for unitary operators)</td>
+</tr>
+<tr>
+<td><code>mpo.serialize()</code></td>
+<td><code>bytes</code> (protobuf)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="rng">Rng<a class="headerlink" href="#rng" title="Permanent link">&para;</a></h3>
+<p>A seeded generator for reproducible measurement and sampling. The same seed
+always produces the same sequence.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">tensorweaver</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tw</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">mps</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">MPS</span><span class="o">.</span><span class="n">zero_state</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_bond_dim</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">rng</span> <span class="o">=</span> <span class="n">tw</span><span class="o">.</span><span class="n">Rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">bits</span> <span class="o">=</span> <span class="n">mps</span><span class="o">.</span><span class="n">sample_bitstring</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
+</code></pre></div>
+<p>An <code>Rng</code> belongs to the engine that created it and must be used with states
+from that same engine.</p>
+<hr />
+<h2 id="utility-functions">Utility Functions<a class="headerlink" href="#utility-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tensorweaver.optimize_ordering(pairs, num_qubits, method="greedy", alpha=1.0, seed=42, fixed_cuts=None)</code></td>
+<td>Qubit layout for a weighted interaction graph. <code>pairs</code> is a list of <code>(i, j, weight)</code>; <code>fixed_cuts</code> lists bonds no qubit may cross. Returns <code>(permutation, cost)</code>. Note <code>execute()</code> passes <code>alpha=3.0</code> by default, not this function's <code>1.0</code></td>
+</tr>
+<tr>
+<td><code>tensorweaver.extract_pairs(circuit)</code></td>
+<td>The weighted interaction graph of a circuit, as <code>(i, j, weight)</code> triples</td>
+</tr>
+<tr>
+<td><code>tensorweaver.reorder_qubits(circuit, perm)</code></td>
+<td>Rewrite a circuit into the layout <code>perm</code></td>
+</tr>
+<tr>
+<td><code>tensorweaver.examples_dir()</code></td>
+<td><code>Path</code> to the bundled example scripts</td>
+</tr>
+<tr>
+<td><code>tensorweaver.docs_dir()</code></td>
+<td><code>Path</code> to the bundled documentation site</td>
+</tr>
+<tr>
+<td><code>tensorweaver.library_info()</code></td>
+<td>Build information string</td>
+</tr>
+<tr>
+<td><code>tensorweaver.rs_version()</code></td>
+<td>Version of the native core</td>
+</tr>
+<tr>
+<td><code>tensorweaver.compile_info()</code></td>
+<td>Build configuration, formatted for reading</td>
+</tr>
+<tr>
+<td><code>tensorweaver._engine.get_core().gpu_available()</code></td>
+<td><code>bool</code>, whether this build has a GPU backend and a device is reachable now. Per engine, not top-level, because the answer is a property of the engine module</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instruction-dispatch">Instruction Dispatch<a class="headerlink" href="#instruction-dispatch" title="Permanent link">&para;</a></h2>
+<p>Applying one mimiqcircuits instruction at a time, for drivers built by hand.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tensorweaver.apply_instruction_mps(mps, rng, inst, cstate, zstate)</code></td>
+<td>Apply an instruction to an MPS. Returns the fidelity</td>
+</tr>
+<tr>
+<td><code>tensorweaver.apply_instruction_mpo(mpo, inst)</code></td>
+<td>Accumulate an instruction into an MPO. Returns <code>True</code> or <code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
+<p>All inherit from <code>TensorWeaverError</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Exception</th>
+<th>Raised when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TensorWeaverError</code></td>
+<td>Base class for everything below</td>
+</tr>
+<tr>
+<td><code>QubitIndexError</code></td>
+<td>A qubit or site index is out of range</td>
+</tr>
+<tr>
+<td><code>BondDimensionError</code></td>
+<td>A bond dimension constraint cannot be met</td>
+</tr>
+<tr>
+<td><code>KrausCompletenessError</code></td>
+<td>A validated channel's operators do not sum to identity, or its probabilities do not sum to 1</td>
+</tr>
+<tr>
+<td><code>GateShapeError</code></td>
+<td>A gate or operator array has the wrong shape or dtype</td>
+</tr>
+<tr>
+<td><code>SerializationError</code></td>
+<td>Protobuf encoding or decoding failed</td>
+</tr>
+<tr>
+<td><code>GpuError</code></td>
+<td>A GPU operation failed, or the device was asked for and is not there</td>
+</tr>
+<tr>
+<td><code>LicenseError</code></td>
+<td>No valid license was found</td>
+</tr>
+</tbody>
+</table>
+<h2 id="qiskit">Qiskit<a class="headerlink" href="#qiskit" title="Permanent link">&para;</a></h2>
+<p>See the <a href="../qiskit/">Qiskit page</a> for usage.</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tensorweaver.qiskit.TensorWeaverBackend(**tw_options)</code></td>
+<td>A Qiskit <code>BackendV2</code> backed by <code>TwSimulator</code></td>
+</tr>
+<tr>
+<td><code>tensorweaver.qiskit.TensorWeaverEstimator(**tw_options)</code></td>
+<td>An <code>EstimatorV2</code> reading expectation values from the MPS. <code>trajectories=</code> / <code>shots=</code> set the budget for a circuit that ends in an ensemble</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  <a class="tw-footer-brand" href="https://www.qperfect.io" title="QPerfect" target="_blank" rel="noopener">
+    <img src="../assets/qperfect-logo-white.svg" alt="QPerfect">
+  </a>
+  
+    <div class="md-copyright__highlight">Copyright &copy; 2025&ndash;2026 QPerfect. All rights reserved.</div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,113 @@
+/* QPerfect brand palette for MIMIQ TensorWeaver. */
+
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color: #157f8f;
+  --md-primary-fg-color--light: #2a98a8;
+  --md-primary-fg-color--dark: #0e5b68;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffffb3;
+}
+
+[data-md-color-accent="custom"] {
+  --md-accent-fg-color: #0e5b68;
+  --md-accent-fg-color--transparent: #157f8f1a;
+}
+
+/* Slate (dark) scheme: lift the teal so it stays legible on dark surfaces. */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #2a98a8;
+  --md-typeset-a-color: #4fb8c8;
+}
+
+/* Gold accent for section-heading permalinks and selected UI flourishes. */
+.md-typeset .headerlink:hover {
+  color: #f5bd22;
+}
+
+/* Home-page hero. */
+.tw-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  padding: 1.6rem 0 0.4rem;
+}
+
+.tw-hero img.tw-hero__logo {
+  width: clamp(140px, 28vw, 240px);
+  height: auto;
+}
+
+.tw-hero h1 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--md-primary-fg-color--dark);
+}
+
+[data-md-color-scheme="slate"] .tw-hero h1 {
+  color: var(--md-primary-fg-color);
+}
+
+.tw-hero p.tw-hero__tag {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.tw-hero .tw-hero__by {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.tw-hero .tw-hero__by img {
+  height: 1.5rem;
+  width: auto;
+}
+
+/* Light / dark logo swapping.
+   The @media rule covers the OS default (and no-JS renders); the
+   attribute selectors are more specific and win when the reader
+   toggles the scheme manually. */
+@media (prefers-color-scheme: dark) {
+  .tw-only-light {
+    display: none;
+  }
+}
+.tw-only-dark {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  .tw-only-dark {
+    display: inline-block;
+  }
+}
+[data-md-color-scheme="default"] .tw-only-light {
+  display: inline-block;
+}
+[data-md-color-scheme="default"] .tw-only-dark {
+  display: none;
+}
+[data-md-color-scheme="slate"] .tw-only-light {
+  display: none;
+}
+[data-md-color-scheme="slate"] .tw-only-dark {
+  display: inline-block;
+}
+
+/* Footer attribution logo. */
+.tw-footer-brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tw-footer-brand img {
+  height: 1.6rem;
+  width: auto;
+  opacity: 0.85;
+}
