@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" role="img" aria-label="TensorWeaver"><title>TensorWeaver</title>
+<defs><linearGradient id="bond" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2a98a8"/><stop offset="1" stop-color="#0e5b68"/></linearGradient><radialGradient id="n0" cx="0.35" cy="0.30" r="0.85"><stop offset="0" stop-color="#7eb9c1"/><stop offset="1" stop-color="#157f8f"/></radialGradient><radialGradient id="n1" cx="0.35" cy="0.30" r="0.85"><stop offset="0" stop-color="#8ac6cf"/><stop offset="1" stop-color="#2a98a8"/></radialGradient><radialGradient id="n2" cx="0.35" cy="0.30" r="0.85"><stop offset="0" stop-color="#a5d6df"/><stop offset="1" stop-color="#5bb5c4"/></radialGradient><radialGradient id="n3" cx="0.35" cy="0.30" r="0.85"><stop offset="0" stop-color="#fadb85"/><stop offset="1" stop-color="#f5bd22"/></radialGradient></defs>
+<g fill="none" stroke="url(#bond)" stroke-width="2.8" stroke-linecap="round" opacity="0.95">
+<path d="M24.0,80.0 L58.0,80.0"/>
+<path d="M58.0,80.0 L92.0,80.0"/>
+<path d="M92.0,80.0 L126.0,80.0"/>
+<path d="M126.0,80.0 L160.0,80.0"/>
+<path d="M160.0,80.0 L194.0,80.0"/>
+<path d="M194.0,80.0 L228.0,80.0"/>
+<path d="M228.0,80.0 L262.0,80.0"/>
+<path d="M262.0,80.0 L296.0,80.0"/>
+<path d="M58.0,80.0 L75.0,59.0"/>
+<path d="M75.0,59.0 L92.0,80.0"/>
+<path d="M58.0,80.0 L75.0,101.0"/>
+<path d="M75.0,101.0 L92.0,80.0"/>
+<path d="M92.0,80.0 L109.0,59.0"/>
+<path d="M109.0,59.0 L126.0,80.0"/>
+<path d="M92.0,80.0 L109.0,101.0"/>
+<path d="M109.0,101.0 L126.0,80.0"/>
+<path d="M126.0,80.0 L143.0,59.0"/>
+<path d="M143.0,59.0 L160.0,80.0"/>
+<path d="M126.0,80.0 L143.0,101.0"/>
+<path d="M143.0,101.0 L160.0,80.0"/>
+<path d="M160.0,80.0 L177.0,59.0"/>
+<path d="M177.0,59.0 L194.0,80.0"/>
+<path d="M160.0,80.0 L177.0,101.0"/>
+<path d="M177.0,101.0 L194.0,80.0"/>
+<path d="M194.0,80.0 L211.0,59.0"/>
+<path d="M211.0,59.0 L228.0,80.0"/>
+<path d="M194.0,80.0 L211.0,101.0"/>
+<path d="M211.0,101.0 L228.0,80.0"/>
+<path d="M228.0,80.0 L245.0,59.0"/>
+<path d="M245.0,59.0 L262.0,80.0"/>
+<path d="M228.0,80.0 L245.0,101.0"/>
+<path d="M245.0,101.0 L262.0,80.0"/>
+<path d="M75.0,59.0 L92.0,38.0"/>
+<path d="M92.0,38.0 L109.0,59.0"/>
+<path d="M75.0,101.0 L92.0,122.0"/>
+<path d="M92.0,122.0 L109.0,101.0"/>
+<path d="M109.0,59.0 L126.0,38.0"/>
+<path d="M126.0,38.0 L143.0,59.0"/>
+<path d="M109.0,101.0 L126.0,122.0"/>
+<path d="M126.0,122.0 L143.0,101.0"/>
+<path d="M143.0,59.0 L160.0,38.0"/>
+<path d="M160.0,38.0 L177.0,59.0"/>
+<path d="M143.0,101.0 L160.0,122.0"/>
+<path d="M160.0,122.0 L177.0,101.0"/>
+<path d="M177.0,59.0 L194.0,38.0"/>
+<path d="M194.0,38.0 L211.0,59.0"/>
+<path d="M177.0,101.0 L194.0,122.0"/>
+<path d="M194.0,122.0 L211.0,101.0"/>
+<path d="M211.0,59.0 L228.0,38.0"/>
+<path d="M228.0,38.0 L245.0,59.0"/>
+<path d="M211.0,101.0 L228.0,122.0"/>
+<path d="M228.0,122.0 L245.0,101.0"/>
+<path d="M75.0,59.0 Q92.0,25.0 109.0,59.0"/>
+<path d="M75.0,101.0 Q92.0,135.0 109.0,101.0"/>
+<path d="M109.0,59.0 Q126.0,25.0 143.0,59.0"/>
+<path d="M109.0,101.0 Q126.0,135.0 143.0,101.0"/>
+<path d="M143.0,59.0 Q160.0,25.0 177.0,59.0"/>
+<path d="M143.0,101.0 Q160.0,135.0 177.0,101.0"/>
+<path d="M177.0,59.0 Q194.0,25.0 211.0,59.0"/>
+<path d="M177.0,101.0 Q194.0,135.0 211.0,101.0"/>
+<path d="M211.0,59.0 Q228.0,25.0 245.0,59.0"/>
+<path d="M211.0,101.0 Q228.0,135.0 245.0,101.0"/>
+</g>
+<circle cx="24.0" cy="80.0" r="6.4" fill="url(#n0)"/>
+<circle cx="58.0" cy="80.0" r="6.0" fill="url(#n1)"/>
+<circle cx="75.0" cy="59.0" r="5.0" fill="url(#n2)"/>
+<circle cx="75.0" cy="101.0" r="5.0" fill="url(#n3)"/>
+<circle cx="92.0" cy="38.0" r="4.4" fill="url(#n0)"/>
+<circle cx="92.0" cy="80.0" r="6.0" fill="url(#n1)"/>
+<circle cx="92.0" cy="122.0" r="4.4" fill="url(#n2)"/>
+<circle cx="109.0" cy="59.0" r="5.0" fill="url(#n3)"/>
+<circle cx="109.0" cy="101.0" r="5.0" fill="url(#n0)"/>
+<circle cx="126.0" cy="38.0" r="4.4" fill="url(#n1)"/>
+<circle cx="126.0" cy="80.0" r="6.0" fill="url(#n2)"/>
+<circle cx="126.0" cy="122.0" r="4.4" fill="url(#n3)"/>
+<circle cx="143.0" cy="59.0" r="5.0" fill="url(#n0)"/>
+<circle cx="143.0" cy="101.0" r="5.0" fill="url(#n1)"/>
+<circle cx="160.0" cy="38.0" r="4.4" fill="url(#n2)"/>
+<circle cx="160.0" cy="80.0" r="6.0" fill="url(#n3)"/>
+<circle cx="160.0" cy="122.0" r="4.4" fill="url(#n0)"/>
+<circle cx="177.0" cy="59.0" r="5.0" fill="url(#n1)"/>
+<circle cx="177.0" cy="101.0" r="5.0" fill="url(#n2)"/>
+<circle cx="194.0" cy="38.0" r="4.4" fill="url(#n3)"/>
+<circle cx="194.0" cy="80.0" r="6.0" fill="url(#n0)"/>
+<circle cx="194.0" cy="122.0" r="4.4" fill="url(#n1)"/>
+<circle cx="211.0" cy="59.0" r="5.0" fill="url(#n2)"/>
+<circle cx="211.0" cy="101.0" r="5.0" fill="url(#n3)"/>
+<circle cx="228.0" cy="38.0" r="4.4" fill="url(#n0)"/>
+<circle cx="228.0" cy="80.0" r="6.0" fill="url(#n1)"/>
+<circle cx="228.0" cy="122.0" r="4.4" fill="url(#n2)"/>
+<circle cx="245.0" cy="59.0" r="5.0" fill="url(#n3)"/>
+<circle cx="245.0" cy="101.0" r="5.0" fill="url(#n0)"/>
+<circle cx="262.0" cy="80.0" r="6.0" fill="url(#n1)"/>
+<circle cx="296.0" cy="80.0" r="6.4" fill="url(#n2)"/>
+</svg>
